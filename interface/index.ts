@@ -1,4 +1,4 @@
-import { HowICanHelpYouIconsEnum } from './enums'
+import { HowICanHelpYouIconsEnum, Roles } from './enums'
 
 export interface ListItems {
   title: string
@@ -47,4 +47,11 @@ export interface LanguageJSON {
     header: string
     hobbiesDescription: Hobbies[]
   }
+}
+
+export interface UserCreateRequest {
+  username: string
+  email: string
+  password: string
+  role: Roles
 }

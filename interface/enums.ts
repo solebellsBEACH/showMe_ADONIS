@@ -13,3 +13,7 @@ export enum Roles {
   ADMIN = 'ADMIN',
   VISITOR = 'VISITOR',
 }
+
+export enum Errors {
+  permissionDenied = 'permissionDenied',
+}
