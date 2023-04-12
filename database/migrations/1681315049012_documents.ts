@@ -1,14 +1,17 @@
-/* eslint-disable prettier/prettier */
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
-import { Pages } from '../../interface/enums'
 
 export default class extends BaseSchema {
-  protected tableName = 'pages'
+  protected tableName = 'documents'
 
   public async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.uuid('id').primary()
-      table.enum('name', Object.values(Pages)).defaultTo(Pages.home).notNullable()
+      table.uuid('page_id').unsigned().references('id').inTable('pages').onDelete('CASCADE')
+      table.string('header').notNullable()
+      table.string('primary_text').notNullable()
+      table.string('secondary_text')
+      table.boolean('hasEffect').notNullable().defaultTo(false)
+      table.boolean('isPersonalBio').notNullable().defaultTo(false)
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
        */

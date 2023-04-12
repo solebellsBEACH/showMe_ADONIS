@@ -10,3 +10,13 @@ export const ErrorMessages = (response: ResponseContract, error: Errors) => {
   }
   response.status(errorConfigs[error].status).send(errorConfigs[error])
 }
+
+interface ResponsesCallbackOption {
+  data?: any
+  message?: string
+  status: number
+}
+type ResponsesCallback = (response: ResponseContract, options: ResponsesCallbackOption) => void
+
+export const responseMessages: ResponsesCallback = (response, options) =>
+  response.status(options.status).send(options)
