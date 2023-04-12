@@ -19,3 +19,9 @@ export enum Errors {
   unexpectedError = 'unexpectedError',
   invalidAuth = 'invalidAuth',
 }
+
+export enum Pages {
+  home = 'home',
+  stacks = 'stacks',
+  hobbies = 'hobbies',
+}
