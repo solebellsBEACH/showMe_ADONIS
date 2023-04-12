@@ -16,4 +16,6 @@ export enum Roles {
 
 export enum Errors {
   permissionDenied = 'permissionDenied',
+  unexpectedError = 'unexpectedError',
+  invalidAuth = 'invalidAuth',
 }

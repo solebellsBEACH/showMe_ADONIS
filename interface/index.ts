@@ -44,7 +44,6 @@ export interface LanguageJSON {
     stacksDescription: ListItems[]
   }
   hobbies: {
-    header: string
     hobbiesDescription: Hobbies[]
   }
 }

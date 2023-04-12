@@ -12,9 +12,7 @@ export default class UsersController {
       if (auth.user?.role !== Roles.ADMIN) response.json(users)
       else ErrorMessages(response, Errors.permissionDenied)
     } catch (error) {
-      response.status(500).send({
-        error: 'Unexpected error while retrieving users',
-      })
+      ErrorMessages(response, Errors.unexpectedError)
     }
   }
 
@@ -25,9 +23,7 @@ export default class UsersController {
       response.json(user)
     } catch (error) {
       console.log(error)
-      response.status(500).send({
-        error: 'Unexpected error while creating user',
-      })
+      ErrorMessages(response, Errors.unexpectedError)
     }
   }
 
@@ -37,9 +33,7 @@ export default class UsersController {
       const user = await User.find(id)
       response.json(user)
     } catch (error) {
-      response.status(500).send({
-        error: 'Unexpected error while retrieving user',
-      })
+      ErrorMessages(response, Errors.unexpectedError)
     }
   }
   public async update({ request, response }: HttpContextContract) {
@@ -58,9 +52,7 @@ export default class UsersController {
       await user.save()
       response.json(user)
     } catch (error) {
-      response.status(500).send({
-        error: 'Unexpected error while updating user',
-      })
+      ErrorMessages(response, Errors.unexpectedError)
     }
   }
 
@@ -74,9 +66,7 @@ export default class UsersController {
         message: 'User deleted',
       })
     } catch (error) {
-      response.status(500).send({
-        error: 'Unexpected error while deleting user',
-      })
+      ErrorMessages(response, Errors.unexpectedError)
     }
   }
 }

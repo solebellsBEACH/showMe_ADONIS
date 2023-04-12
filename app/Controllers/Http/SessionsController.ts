@@ -1,11 +1,18 @@
 // import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
+import { ErrorMessages } from '../../../common/ErrorMessages'
+import { Errors } from '../../../interface/enums'
+
 export default class SessionsController {
-  public async create({ request, auth }) {
-    const { email, password } = request.all()
+  public async create({ response, request, auth }) {
+    try {
+      const { email, password } = request.all()
 
-    const token = await auth.attempt(email, password)
+      const token = await auth.attempt(email, password)
 
-    return token
+      return token
+    } catch (error) {
+      ErrorMessages(response, Errors.invalidAuth)
+    }
   }
 }
