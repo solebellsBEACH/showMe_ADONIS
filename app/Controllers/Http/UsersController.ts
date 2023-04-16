@@ -6,7 +6,6 @@ import { Roles, Errors } from '../../../interface/enums'
 
 export default class UsersController {
   public async index({ response, auth }: HttpContextContract) {
-    // console.log(auth)
     try {
       const users = await User.all()
       if (auth.user?.role !== Roles.ADMIN) response.json(users)
@@ -22,7 +21,6 @@ export default class UsersController {
       const user = await User.create(data as UserCreateRequest)
       response.json(user)
     } catch (error) {
-      console.log(error)
       ErrorMessages(response, Errors.unexpectedError)
     }
   }

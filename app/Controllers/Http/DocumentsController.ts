@@ -11,7 +11,6 @@ import { v4 } from 'uuid'
 export default class DocumentsController {
   public async index({ response, request }: HttpContextContract) {
     try {
-      let pageId
       if (request.all()?.page) {
         const responsePage = await Page.findBy('name', request.all()?.page)
         if (!responsePage) {
@@ -21,10 +20,15 @@ export default class DocumentsController {
           })
           return
         }
-        pageId = responsePage?.id
+        const list = await Document.query().where('page_id', responsePage?.id)
+        responseMessages(response, {
+          data: list || [],
+          status: 202,
+          message: 'Success in documents list',
+        })
+        return
       }
-      console.log(pageId)
-      const list = pageId ? await Document.query().where('page_id', pageId) : await Document.all()
+      const list = await Document.all()
 
       responseMessages(response, {
         data: list || [],
@@ -41,11 +45,13 @@ export default class DocumentsController {
       const responsePage = await Page.findBy('name', body.page)
       // eslint-disable-next-line @typescript-eslint/naming-convention
       const page_id = responsePage?.id
-      if (!page_id)
+      if (!page_id) {
         responseMessages(response, {
           status: 404,
           message: 'Page not found',
         })
+        return
+      }
 
       const { header, primary_text, secondary_text } = body
       const document = await Document.create({
