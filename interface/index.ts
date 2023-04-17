@@ -1,4 +1,4 @@
-import { HowICanHelpYouIconsEnum, Pages, Roles } from './enums'
+import { HowICanHelpYouIconsEnum, LanguageCodeEnum, Pages, Roles } from './enums'
 
 export interface ListItems {
   title: string
@@ -56,8 +56,19 @@ export interface UserCreateRequest {
   role: Roles
 }
 export interface DocumentCreateRequest {
-  page: Pages
-  header: string
-  primary_text: string
+  documents: {
+    page: Pages
+    header: string
+    primary_text: string
+    language: LanguageCodeEnum
+    secondary_text?: string
+  }[]
+}
+
+export interface DocumentUpdateRequest {
+  page?: Pages
+  header?: string
+  primary_text?: string
+  language?: LanguageCodeEnum
   secondary_text?: string
 }

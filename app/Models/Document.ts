@@ -1,5 +1,6 @@
 import { DateTime } from 'luxon'
 import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
+import { LanguageCodeEnum } from '../../interface/enums'
 
 export default class Document extends BaseModel {
   @column({ isPrimary: true })
@@ -10,6 +11,9 @@ export default class Document extends BaseModel {
 
   @column()
   public header: string
+
+  @column()
+  public language: LanguageCodeEnum
 
   @column()
   public primary_text: string

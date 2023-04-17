@@ -31,6 +31,8 @@ Route.post('user/create', 'UsersController.store')
 
 Route.group(() => {
   Route.post('document/create', 'DocumentsController.store')
+  Route.put('document/update/:id', 'DocumentsController.update')
+  Route.delete('document/delete/:id', 'DocumentsController.delete')
 
   Route.get('user/all', 'UsersController.index')
 }).middleware('auth')

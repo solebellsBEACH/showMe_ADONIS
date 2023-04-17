@@ -1,4 +1,5 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
+import { LanguageCodeEnum } from '../../interface/enums'
 
 export default class extends BaseSchema {
   protected tableName = 'documents'
@@ -7,6 +8,10 @@ export default class extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.uuid('id').primary()
       table.uuid('page_id').unsigned().references('id').inTable('pages').onDelete('CASCADE')
+      table
+        .enum('language', Object.values(LanguageCodeEnum))
+        .defaultTo(LanguageCodeEnum.portuguese)
+        .notNullable()
       table.string('header').notNullable()
       table.string('primary_text').notNullable()
       table.string('secondary_text')
