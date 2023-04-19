@@ -22,10 +22,13 @@ export default class Document extends BaseModel {
   public secondary_text?: string
 
   @column()
-  public hasEffect: boolean
+  public has_effect: boolean
 
   @column()
-  public isPersonalBio: boolean
+  public is_personal_bio: boolean
+
+  @column()
+  public image_url: string
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

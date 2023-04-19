@@ -12,11 +12,12 @@ export default class extends BaseSchema {
         .enum('language', Object.values(LanguageCodeEnum))
         .defaultTo(LanguageCodeEnum.portuguese)
         .notNullable()
+      table.string('image_url').notNullable()
       table.string('header').notNullable()
       table.string('primary_text').notNullable()
       table.string('secondary_text')
-      table.boolean('hasEffect').notNullable().defaultTo(false)
-      table.boolean('isPersonalBio').notNullable().defaultTo(false)
+      table.boolean('has_effect').notNullable().defaultTo(false)
+      table.boolean('is_personal_bio').notNullable().defaultTo(false)
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
        */

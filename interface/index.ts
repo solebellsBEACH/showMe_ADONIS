@@ -11,7 +11,7 @@ export interface Bio {
   primary_text: string
   secondary_text: string
   image_url: string
-  hasEffect?: boolean
+  has_effect?: boolean
 }
 
 export interface Document {
@@ -20,8 +20,8 @@ export interface Document {
   primary_text: string
   secondary_text: string
   image_url: string
-  hasEffect: boolean
-  isPersonalBio: boolean
+  has_effect: boolean
+  is_personal_bio: boolean
 }
 
 export interface Project extends Document {
