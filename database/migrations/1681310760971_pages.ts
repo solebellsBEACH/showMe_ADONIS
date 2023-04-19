@@ -7,7 +7,7 @@ export default class extends BaseSchema {
 
   public async up() {
     this.schema.createTable(this.tableName, (table) => {
-      table.uuid('id')
+      table.uuid('id').primary()
       table.enum('name', Object.values(Pages)).defaultTo(Pages.home).notNullable()
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
