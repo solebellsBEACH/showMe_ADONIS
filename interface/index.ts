@@ -24,6 +24,11 @@ export interface Document {
   is_personal_bio: boolean
 }
 
+export type HomePageData = {
+  bios: Document[]
+  bio: Document
+}
+
 export interface Project extends Document {
   tecnologies?: string[]
 }
@@ -31,24 +36,6 @@ export interface Project extends Document {
 export interface Hobbies extends Document {
   subject: string
 }
-export interface LanguageJSON {
-  homePage: {
-    bios: Document[]
-    bio: Document
-    howIHelpYou: {
-      context: { header: string; text: string; icon: HowICanHelpYouIconsEnum }[]
-    }
-  }
-  stacks: {
-    bio: Document[]
-    projects: Project[]
-    stacksDescription: ListItems[]
-  }
-  hobbies: {
-    hobbiesDescription: Hobbies[]
-  }
-}
-
 export interface UserCreateRequest {
   username: string
   email: string

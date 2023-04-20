@@ -3,11 +3,11 @@ import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Document from 'App/Models/Document'
 import { ErrorMessages } from '../../../common/ErrorMessages'
 import { responseMessages } from '../../../common/ErrorMessages'
-import { Errors } from '../../../interface/enums'
-import Page from 'App/Models/Page'
+import { Errors, LanguageCodeEnum, Pages } from '../../../interface/enums'
 import { DocumentCreateRequest, DocumentUpdateRequest } from 'interface'
 import { v4 } from 'uuid'
 import { havePermission } from '../../../helpers/havePermission'
+import Page from 'App/Models/Page'
 
 export default class DocumentsController {
   public async index({ response, request }: HttpContextContract) {
@@ -92,7 +92,6 @@ export default class DocumentsController {
       ErrorMessages(response, Errors.unexpectedError)
     }
   }
-
   public async delete({ response, request, auth }: HttpContextContract) {
     if (!havePermission(auth)) {
       ErrorMessages(response, Errors.permissionDenied)
@@ -109,6 +108,74 @@ export default class DocumentsController {
         status: 202,
         message: 'Success in document delete',
       })
+    } catch (error) {
+      ErrorMessages(response, Errors.unexpectedError)
+    }
+  }
+  public async indexHome({ response, request }: HttpContextContract) {
+    try {
+      const { language = LanguageCodeEnum.english } = request.params() as {
+        language: LanguageCodeEnum
+      }
+      const responsePage = await Page.findBy('name', Pages.home)
+      if (!responsePage) {
+        responseMessages(response, {
+          status: 404,
+          message: 'Page not Found',
+        })
+        return
+      }
+      const documents = await Document.query()
+        .where('page_id', responsePage?.id)
+        .andWhere('is_personal_bio', false)
+        .andWhere('language', language)
+
+      const bio = await Document.query()
+        .where('page_id', responsePage?.id)
+        .andWhere('is_personal_bio', true)
+        .andWhere('language', language)
+        .limit(1)
+      const data = { bio, bios: documents }
+      responseMessages(response, {
+        data,
+        status: 202,
+        message: 'Success in documents list',
+      })
+      return
+    } catch (error) {
+      ErrorMessages(response, Errors.unexpectedError)
+    }
+  }
+  public async indexStacks({ response, request }: HttpContextContract) {
+    try {
+      const { language = LanguageCodeEnum.english } = request.params() as {
+        language: LanguageCodeEnum
+      }
+      const responsePage = await Page.findBy('name', Pages.home)
+      if (!responsePage) {
+        responseMessages(response, {
+          status: 404,
+          message: 'Page not Found',
+        })
+        return
+      }
+      const documents = await Document.query()
+        .where('page_id', responsePage?.id)
+        .andWhere('is_personal_bio', false)
+        .andWhere('language', language)
+
+      const bio = await Document.query()
+        .where('page_id', responsePage?.id)
+        .andWhere('is_personal_bio', true)
+        .andWhere('language', language)
+        .limit(1)
+      const data = { bio, bios: documents }
+      responseMessages(response, {
+        data,
+        status: 202,
+        message: 'Success in documents list',
+      })
+      return
     } catch (error) {
       ErrorMessages(response, Errors.unexpectedError)
     }

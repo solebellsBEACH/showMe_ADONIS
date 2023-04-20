@@ -62,5 +62,6 @@ export const DocumentsSeedData: DocumentsSeedDataType[] = [
     ...documentModel,
     id: v4(),
     language: LanguageCodeEnum.portuguese,
+    is_personal_bio: true,
   },
 ]
