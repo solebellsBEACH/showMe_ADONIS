@@ -26,7 +26,7 @@ Route.get('/', async () => {
 
 Route.post('user/login', 'SessionsController.create')
 
-Route.get('document/all', 'DocumentsController.index')
+Route.get('document/all/:page', 'DocumentsController.index')
 Route.post('user/create', 'UsersController.store')
 
 Route.group(() => {
