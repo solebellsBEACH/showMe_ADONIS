@@ -1,15 +1,15 @@
 {
   "_type": "export",
   "__export_format": 4,
-  "__export_date": "2023-04-17T22:14:03.377Z",
+  "__export_date": "2023-04-20T17:09:43.595Z",
   "__export_source": "insomnia.desktop.app:v2023.1.0",
   "resources": [
     {
       "_id": "req_fc9f5938da0d44ca92c7980c2d7166aa",
       "parentId": "fld_cd549804a048465587b2004a84d98628",
-      "modified": 1681767758381,
+      "modified": 1682001203470,
       "created": 1681314861482,
-      "url": "{{ _.baseUrl }}document/all",
+      "url": "{{ _.baseUrl }}document/all?page=home",
       "name": "GET ALL",
       "description": "",
       "method": "GET",
@@ -56,6 +56,75 @@
       "description": "",
       "scope": "collection",
       "_type": "workspace"
+    },
+    {
+      "_id": "req_d12d565c73de43eda95196f673f519c9",
+      "parentId": "fld_cd549804a048465587b2004a84d98628",
+      "modified": 1682008022689,
+      "created": 1681951353243,
+      "url": "{{ _.baseUrl }}document/allHome",
+      "name": "GET ALL HOME",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "id": "pair_5ba6107b2f27434d9e75d96ea9b81e98",
+          "name": "page",
+          "value": "stacks",
+          "description": "",
+          "disabled": true
+        },
+        {
+          "id": "pair_4954d436d62b4ce093cf8a31b1900433",
+          "name": "language",
+          "value": "pt",
+          "description": "",
+          "disabled": false
+        }
+      ],
+      "headers": [],
+      "authentication": { "type": "bearer", "token": "{{ _.token }}" },
+      "metaSortKey": -1681314834339,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_567cd934ed104900879a364ad1130acd",
+      "parentId": "fld_cd549804a048465587b2004a84d98628",
+      "modified": 1682008121006,
+      "created": 1682001264644,
+      "url": "{{ _.baseUrl }}document/allStacks",
+      "name": "GET ALL STACKS",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "id": "pair_5ba6107b2f27434d9e75d96ea9b81e98",
+          "name": "page",
+          "value": "stacks",
+          "description": "",
+          "disabled": true
+        }
+      ],
+      "headers": [],
+      "authentication": { "type": "bearer", "token": "{{ _.token }}" },
+      "metaSortKey": -1681314834326.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
     },
     {
       "_id": "req_63ff2ca2f54e41dd937bcb4e8c5580c6",
@@ -123,6 +192,140 @@
       "modified": 1681767667058,
       "created": 1681767647547,
       "url": "{{ _.baseUrl }}document/delete/f5f445fc-4346-453c-9747-5cd5b728e4c0",
+      "name": "DELETE DOCUMENT",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [
+        {
+          "id": "pair_b291c076194e49f19ac3d280adf8aba1",
+          "name": "id",
+          "value": "f5f445fc-4346-453c-9747-5cd5b728e4c0",
+          "description": "",
+          "disabled": true
+        }
+      ],
+      "headers": [],
+      "authentication": { "type": "bearer", "token": "{{ _.token }}", "prefix": "" },
+      "metaSortKey": -1681196407813.25,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_79faf6a584724f118bd6a1863700bfff",
+      "parentId": "fld_c679a0c2332f434cbcd7b37dd0d1c7fa",
+      "modified": 1682009303190,
+      "created": 1682009235160,
+      "url": "{{ _.baseUrl }}stack/all",
+      "name": "GET ALL",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "id": "pair_5ba6107b2f27434d9e75d96ea9b81e98",
+          "name": "page",
+          "value": "stacks",
+          "description": "",
+          "disabled": true
+        }
+      ],
+      "headers": [],
+      "authentication": { "type": "bearer", "token": "{{ _.token }}" },
+      "metaSortKey": -1681314834364,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_c679a0c2332f434cbcd7b37dd0d1c7fa",
+      "parentId": "wrk_6807f00a40d84923aeab8b285fcdf8ce",
+      "modified": 1682009235151,
+      "created": 1682009235151,
+      "name": "STACKS",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1681235872367.5,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_85f80edb567b491a8975cfe7a1e73d1e",
+      "parentId": "fld_c679a0c2332f434cbcd7b37dd0d1c7fa",
+      "modified": 1682010403422,
+      "created": 1682009235163,
+      "url": "{{ _.baseUrl }}stack/create",
+      "name": "CREATE DOCUMENT",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"stacks\": [\n{\n\t\t\t\t\"language\": \"en\",\n\t\t\t\t\"image_url\": \"https://raw.githubusercontent.com/solebellsBEACH/showMeAssets/main/assets/stacks/react.svg\",\n\t\t\t\t\"title\": \"TESTANDO 1\",\n\t\t\t\t\"description\": \"React is an open source JavaScript front-end library focused on creating user interfaces on web pages.\",\n\t\t\t\t\"my_xp\": \"I've worked with this library throughout my developer career,working on several projects of different scopes.\"\n\t\t},\n\t\t{\n\t\t\t\t\"language\": \"pt\",\n\t\t\t\t\"image_url\": \"https://raw.githubusercontent.com/solebellsBEACH/showMeAssets/main/assets/stacks/react.svg\",\n\t\t\t\t\"title\": \"TESTANDO 2\",\n\t\t\t\t\"description\": \"React is an open source JavaScript front-end library focused on creating user interfaces on web pages.\",\n\t\t\t\t\"my_xp\": \"I've worked with this library throughout my developer career,working on several projects of different scopes.\"\n\t\t}\n\t]\n}"
+      },
+      "parameters": [],
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "authentication": { "type": "bearer", "token": "{{ _.token }}", "prefix": "" },
+      "metaSortKey": -1681314834314,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_8dbc7e2d6f7d4d4293baea84ec2aef0e",
+      "parentId": "fld_c679a0c2332f434cbcd7b37dd0d1c7fa",
+      "modified": 1682009297808,
+      "created": 1682009235165,
+      "url": "{{ _.baseUrl }}stack/update/",
+      "name": "UPDATE DOCUMENT",
+      "description": "",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"header\": \"Meu nome é ronaldo cabral, não tenho medo de nada\"\n}"
+      },
+      "parameters": [
+        {
+          "id": "pair_b291c076194e49f19ac3d280adf8aba1",
+          "name": "id",
+          "value": "f5f445fc-4346-453c-9747-5cd5b728e4c0",
+          "description": "",
+          "disabled": true
+        }
+      ],
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "authentication": { "type": "bearer", "token": "{{ _.token }}", "prefix": "" },
+      "metaSortKey": -1681235883313.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_14da9784837f469ab14503f0cbf6023a",
+      "parentId": "fld_c679a0c2332f434cbcd7b37dd0d1c7fa",
+      "modified": 1682009293469,
+      "created": 1682009235168,
+      "url": "{{ _.baseUrl }}stack/delete/",
       "name": "DELETE DOCUMENT",
       "description": "",
       "method": "DELETE",
@@ -238,12 +441,12 @@
     {
       "_id": "env_0bb3cdc3f09755b237714459945369e5ed5681f6",
       "parentId": "wrk_6807f00a40d84923aeab8b285fcdf8ce",
-      "modified": 1681686057482,
+      "modified": 1682010029665,
       "created": 1681156903319,
       "name": "Base Environment",
       "data": {
         "baseUrl": "http://127.0.0.1:3333/",
-        "token": "MQ.B0uWW5q_NpAlmc6wnG-aCOO86KvBUflYNSslIwfRbG2ywZgFsdEkykr0rY2w"
+        "token": "MQ.sNnh4KVTaLlPW_MsvnJXNcEnKIt-fG_JuiDYd2XAh51EXtbDuXkZjd3z7x6V"
       },
       "dataPropertyOrder": { "&": ["baseUrl", "token"] },
       "color": null,

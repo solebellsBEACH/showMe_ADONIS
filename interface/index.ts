@@ -1,4 +1,4 @@
-import { HowICanHelpYouIconsEnum, LanguageCodeEnum, Pages, Roles } from './enums'
+import { LanguageCodeEnum, Pages, Roles } from './enums'
 
 export interface ListItems {
   title: string
@@ -58,4 +58,12 @@ export interface DocumentUpdateRequest {
   primary_text?: string
   language?: LanguageCodeEnum
   secondary_text?: string
+}
+
+export type Stack = {
+  id: string
+  title: string
+  description: string
+  myXP: string
+  image: string
 }

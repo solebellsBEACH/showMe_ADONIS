@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Document from 'App/Models/Document'
-import { ErrorMessages } from '../../../common/ErrorMessages'
-import { responseMessages } from '../../../common/ErrorMessages'
+import { ErrorMessages, responseMessages } from '../../../common/ErrorMessages'
 import { Errors, LanguageCodeEnum, Pages } from '../../../interface/enums'
 import { DocumentCreateRequest, DocumentUpdateRequest } from 'interface'
 import { v4 } from 'uuid'
@@ -24,7 +23,6 @@ export default class DocumentsController {
           return
         }
         const list = await Document.query().where('page_id', responsePage?.id)
-        response.send({ list, responsePage })
         responseMessages(response, {
           data: list || [],
           status: 202,

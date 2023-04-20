@@ -31,10 +31,18 @@ Route.get('document/allHome', 'DocumentsController.indexHome')
 Route.get('document/allStacks', 'DocumentsController.indexStacks')
 Route.post('user/create', 'UsersController.store')
 
+Route.get('stack/all', 'StacksController.index')
+
 Route.group(() => {
+  // Document Routes
   Route.post('document/create', 'DocumentsController.store')
   Route.put('document/update/:id', 'DocumentsController.update')
   Route.delete('document/delete/:id', 'DocumentsController.delete')
+
+  // Stack Routes
+  Route.post('stack/create', 'StacksController.store')
+  Route.put('stack/update/:id', 'StacksController.update')
+  Route.delete('stack/delete/:id', 'StacksController.delete')
 
   Route.get('user/all', 'UsersController.index')
 }).middleware('auth')
