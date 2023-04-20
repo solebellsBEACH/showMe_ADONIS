@@ -8,6 +8,8 @@ import { DocumentCreateRequest, DocumentUpdateRequest } from 'interface'
 import { v4 } from 'uuid'
 import { havePermission } from '../../../helpers/havePermission'
 import Page from 'App/Models/Page'
+import Stack from 'App/Models/Stack'
+import Project from 'App/Models/Project'
 
 export default class DocumentsController {
   public async index({ response, request }: HttpContextContract) {
@@ -114,7 +116,7 @@ export default class DocumentsController {
   }
   public async indexHome({ response, request }: HttpContextContract) {
     try {
-      const { language = LanguageCodeEnum.english } = request.params() as {
+      const { language = LanguageCodeEnum.english } = request.all() as {
         language: LanguageCodeEnum
       }
       const responsePage = await Page.findBy('name', Pages.home)
@@ -125,7 +127,7 @@ export default class DocumentsController {
         })
         return
       }
-      const documents = await Document.query()
+      const bios = await Document.query()
         .where('page_id', responsePage?.id)
         .andWhere('is_personal_bio', false)
         .andWhere('language', language)
@@ -134,8 +136,16 @@ export default class DocumentsController {
         .where('page_id', responsePage?.id)
         .andWhere('is_personal_bio', true)
         .andWhere('language', language)
-        .limit(1)
-      const data = { bio, bios: documents }
+      if (bio.length === 0) {
+        responseMessages(response, {
+          data: language,
+          status: 404,
+          message: 'Personal Bio not Found',
+        })
+        return
+      }
+
+      const data = { bio, bios }
       responseMessages(response, {
         data,
         status: 202,
@@ -148,10 +158,10 @@ export default class DocumentsController {
   }
   public async indexStacks({ response, request }: HttpContextContract) {
     try {
-      const { language = LanguageCodeEnum.english } = request.params() as {
+      const { language = LanguageCodeEnum.english } = request.all() as {
         language: LanguageCodeEnum
       }
-      const responsePage = await Page.findBy('name', Pages.home)
+      const responsePage = await Page.findBy('name', Pages.stacks)
       if (!responsePage) {
         responseMessages(response, {
           status: 404,
@@ -159,19 +169,11 @@ export default class DocumentsController {
         })
         return
       }
-      const documents = await Document.query()
-        .where('page_id', responsePage?.id)
-        .andWhere('is_personal_bio', false)
-        .andWhere('language', language)
+      const stacks = await Stack.query().andWhere('language', language)
+      const projects = await Project.query().andWhere('language', language)
 
-      const bio = await Document.query()
-        .where('page_id', responsePage?.id)
-        .andWhere('is_personal_bio', true)
-        .andWhere('language', language)
-        .limit(1)
-      const data = { bio, bios: documents }
       responseMessages(response, {
-        data,
+        data: { projects, stacks },
         status: 202,
         message: 'Success in documents list',
       })

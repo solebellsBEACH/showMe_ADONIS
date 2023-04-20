@@ -26,9 +26,9 @@ Route.get('/', async () => {
 
 Route.post('user/login', 'SessionsController.create')
 
-Route.get('document/all/:page', 'DocumentsController.index')
-Route.get('document/allHome/:language', 'DocumentsController.indexHome')
-Route.get('document/allStacks/:language', 'DocumentsController.indexStacks')
+Route.get('document/all', 'DocumentsController.index')
+Route.get('document/allHome', 'DocumentsController.indexHome')
+Route.get('document/allStacks', 'DocumentsController.indexStacks')
 Route.post('user/create', 'UsersController.store')
 
 Route.group(() => {
