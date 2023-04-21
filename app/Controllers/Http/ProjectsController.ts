@@ -1,18 +1,18 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { ErrorMessages, responseMessages } from '../../../common/ErrorMessages'
 import { Errors } from '../../../interface/enums'
-import Stack from 'App/Models/Stack'
-import { Stack as StackType, StackUpdateRequest } from '../../../interface'
+import Project from 'App/Models/Project'
+import { ProjectCreateRequestBody, ProjectUpdateRequest } from '../../../interface'
 import { v4 } from 'uuid'
 import { havePermission } from '../../../helpers/havePermission'
-export default class StacksController {
+export default class ProjectsController {
   public async index({ response }: HttpContextContract) {
     try {
-      const list = await Stack.all()
+      const list = await Project.all()
       responseMessages(response, {
         data: list || [],
         status: 202,
-        message: 'Success in stacks list',
+        message: 'Success in projects list',
       })
       return
     } catch (error) {
@@ -21,17 +21,17 @@ export default class StacksController {
   }
   public async store({ request, response }: HttpContextContract) {
     try {
-      const requestData: StackType[] = request.all().stacks
-      const stacks = await Stack.createMany(
+      const requestData: ProjectCreateRequestBody[] = request.all().projects
+      const projects = await Project.createMany(
         requestData.map((e) => {
-          return { ...e, id: v4() }
+          return { ...e, id: v4(), tecnologies: JSON.stringify(e.tecnologies) }
         })
       )
 
       responseMessages(response, {
-        data: stacks,
+        data: projects,
         status: 202,
-        message: 'Success in stacks create',
+        message: 'Success in projects create',
       })
       return
     } catch (error) {
@@ -47,16 +47,16 @@ export default class StacksController {
     }
     const { id } = request.params() as { id: string }
     try {
-      const stack = await Stack.find(id)
-      const data = request.body() as StackUpdateRequest
+      const project = await Project.find(id)
+      const data = request.body() as ProjectUpdateRequest
 
-      if (!stack) throw new Error('stack not found')
-      stack.merge(data)
-      const updatedStack = await stack.save()
+      if (!project) throw new Error('project not found')
+      project.merge(data)
+      const updatedProject = await project.save()
       responseMessages(response, {
-        data: updatedStack,
+        data: updatedProject,
         status: 202,
-        message: 'Success in stack update',
+        message: 'Success in project update',
       })
     } catch (error) {
       ErrorMessages(response, Errors.unexpectedError)
@@ -69,14 +69,14 @@ export default class StacksController {
     }
     const { id } = request.params() as { id: string }
     try {
-      const stack = await Stack.find(id)
-      if (!stack) throw new Error('stack not found')
+      const project = await Project.find(id)
+      if (!project) throw new Error('project not found')
 
-      await stack.delete()
+      await project.delete()
       responseMessages(response, {
         data: null,
         status: 202,
-        message: 'Success in stack delete',
+        message: 'Success in project delete',
       })
     } catch (error) {
       ErrorMessages(response, Errors.unexpectedError)

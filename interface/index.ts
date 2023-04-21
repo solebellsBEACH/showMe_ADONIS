@@ -30,7 +30,7 @@ export type HomePageData = {
 }
 
 export interface Project extends Document {
-  tecnologies?: string[]
+  tecnologies: string
 }
 
 export interface Hobbies extends Document {
@@ -67,3 +67,14 @@ export type Stack = {
   myXP: string
   image: string
 }
+export interface StackUpdateRequest {
+  page?: Pages
+  header?: string
+  primary_text?: string
+  language?: LanguageCodeEnum
+  secondary_text?: string
+}
+export interface ProjectCreateRequestBody extends Document {
+  tecnologies: string[]
+}
+export interface ProjectUpdateRequest extends Project {}

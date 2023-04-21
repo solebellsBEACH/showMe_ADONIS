@@ -32,12 +32,18 @@ Route.get('document/allStacks', 'DocumentsController.indexStacks')
 Route.post('user/create', 'UsersController.store')
 
 Route.get('stack/all', 'StacksController.index')
+Route.get('project/all', 'ProjectsController.index')
 
 Route.group(() => {
   // Document Routes
   Route.post('document/create', 'DocumentsController.store')
   Route.put('document/update/:id', 'DocumentsController.update')
   Route.delete('document/delete/:id', 'DocumentsController.delete')
+
+  // Project Routes
+  Route.post('project/create', 'ProjectsController.store')
+  Route.put('project/update/:id', 'ProjectsController.update')
+  Route.delete('project/delete/:id', 'ProjectsController.delete')
 
   // Stack Routes
   Route.post('stack/create', 'StacksController.store')
