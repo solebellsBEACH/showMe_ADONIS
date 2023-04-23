@@ -14,14 +14,15 @@ export interface Bio {
   has_effect?: boolean
 }
 
-export interface Document {
+export type Document = {
   page: Pages
   header: string
   primary_text: string
-  secondary_text: string
+  secondary_text?: string
   image_url: string
   has_effect?: boolean
   is_personal_bio?: boolean
+  subtitle?: string
 }
 
 export type HomePageData = {
@@ -55,6 +56,7 @@ export interface DocumentCreateRequest {
     primary_text: string
     language: LanguageCodeEnum
     secondary_text?: string
+    subtitle?: string
   }[]
 }
 
@@ -64,6 +66,7 @@ export interface DocumentUpdateRequest {
   primary_text?: string
   language?: LanguageCodeEnum
   secondary_text?: string
+  subtitle?: string
 }
 
 export type Stack = {

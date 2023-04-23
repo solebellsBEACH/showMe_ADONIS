@@ -143,7 +143,7 @@ export default class DocumentsController {
         return
       }
 
-      const data = { bio, bios }
+      const data = { bio: bio[0], bios }
       responseMessages(response, {
         data,
         status: 202,
@@ -172,6 +172,33 @@ export default class DocumentsController {
 
       responseMessages(response, {
         data: { projects, stacks },
+        status: 202,
+        message: 'Success in documents list',
+      })
+      return
+    } catch (error) {
+      ErrorMessages(response, Errors.unexpectedError)
+    }
+  }
+  public async indexHobbies({ response, request }: HttpContextContract) {
+    try {
+      const { language = LanguageCodeEnum.english } = request.all() as {
+        language: LanguageCodeEnum
+      }
+      const responsePage = await Page.findBy('name', Pages.hobbies)
+      if (!responsePage) {
+        responseMessages(response, {
+          status: 404,
+          message: 'Page not Found',
+        })
+        return
+      }
+      const hobbies = await Document.query()
+        .where('page_id', responsePage?.id)
+        .andWhere('language', language)
+
+      responseMessages(response, {
+        data: hobbies,
         status: 202,
         message: 'Success in documents list',
       })

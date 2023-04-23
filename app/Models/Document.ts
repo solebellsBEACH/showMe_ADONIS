@@ -22,6 +22,9 @@ export default class Document extends BaseModel {
   public secondary_text?: string
 
   @column()
+  public subtitle?: string
+
+  @column()
   public has_effect: boolean
 
   @column()

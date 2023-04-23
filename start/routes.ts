@@ -29,6 +29,7 @@ Route.post('user/login', 'SessionsController.create')
 Route.get('document/all', 'DocumentsController.index')
 Route.get('document/allHome', 'DocumentsController.indexHome')
 Route.get('document/allStacks', 'DocumentsController.indexStacks')
+Route.get('document/allHobbies', 'DocumentsController.indexHobbies')
 Route.post('user/create', 'UsersController.store')
 
 Route.get('stack/all', 'StacksController.index')

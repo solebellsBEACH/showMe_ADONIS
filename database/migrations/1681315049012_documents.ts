@@ -14,8 +14,9 @@ export default class extends BaseSchema {
         .notNullable()
       table.string('image_url').notNullable()
       table.string('header').notNullable()
-      table.string('primary_text').notNullable()
-      table.string('secondary_text')
+      table.string('primary_text', 800).notNullable()
+      table.string('secondary_text', 800)
+      table.string('subtitle', 800)
       table.boolean('has_effect').notNullable().defaultTo(false)
       table.boolean('is_personal_bio').notNullable().defaultTo(false)
       /**
