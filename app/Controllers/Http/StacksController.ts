@@ -1,14 +1,17 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { ErrorMessages, responseMessages } from '../../../common/ErrorMessages'
-import { Errors } from '../../../interface/enums'
+import { Errors, LanguageCodeEnum } from '../../../interface/enums'
 import Stack from 'App/Models/Stack'
 import { Stack as StackType, StackUpdateRequest } from '../../../interface'
 import { v4 } from 'uuid'
 import { havePermission } from '../../../helpers/havePermission'
 export default class StacksController {
-  public async index({ response }: HttpContextContract) {
+  public async index({ request, response }: HttpContextContract) {
     try {
-      const list = await Stack.all()
+      const { language = LanguageCodeEnum.english } = request.all() as {
+        language: LanguageCodeEnum
+      }
+      const list = await Stack.query().where('language', language)
       responseMessages(response, {
         data: list || [],
         status: 202,

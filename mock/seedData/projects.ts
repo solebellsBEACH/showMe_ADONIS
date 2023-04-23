@@ -84,4 +84,63 @@ export const ProjectsSeedData: ProjectsSeedDataType[] = [
       'Redux toolkit',
     ]),
   },
+  {
+    id: v4(),
+    language: LanguageCodeEnum.english,
+    header: 'AFPESP',
+    primary_text:
+      'in this project I worked on the creation of a mobile home, in which I worked on the flow of services in which I created all the crud for purchasing meals, digital menu, points of sale, in addition to having worked on creating authentication via digital and easy and on notification screen.',
+    secondary_text: '',
+    image_url: afpesp,
+    has_effect: false,
+    tecnologies: JSON.stringify(['React Native', 'Styled Components', 'Typescript ', 'Expo CLI']),
+  },
+  {
+    id: v4(),
+    language: LanguageCodeEnum.english,
+    header: 'Ranking dos Políticos',
+    primary_text:
+      'This was a very interesting project, in which it was a ranking of politicians who were evaluated based on their votes for bills.',
+    secondary_text:
+      'In this project I worked on the creation of the ranking itself, in addition to the blog with news about the candidates.',
+    image_url: ranking,
+    has_effect: false,
+    tecnologies: JSON.stringify(['NextJs', 'Redux Saga', 'Styled Components ']),
+  },
+
+  {
+    id: v4(),
+    language: LanguageCodeEnum.english,
+    header: 'Prevent Senior',
+    tecnologies: JSON.stringify(['NextJs', 'Typescript ', 'SASS', 'Context API']),
+    primary_text:
+      'On this front, I worked on creating some features of the admin portal that the patient had his data and vital information, such as heartbeats, blood pressure, among others...',
+    secondary_text:
+      "It communicated with an API that was powered by a smartwatch that stayed as a patient, and if there was something dangerous to the patient's health, it would alert those responsible.",
+    image_url: prevent,
+    has_effect: false,
+  },
+  {
+    id: v4(),
+    language: LanguageCodeEnum.english,
+    header: 'Kolping',
+    primary_text:
+      'In this project I worked on the back end of a solution that had many different payment integrations.',
+    secondary_text:
+      'The main one was with IuguJS, in addition, I was responsible for creating the user flow and for configuring all permissions for each one, implementing a solution based on enums linked to a table of roles.',
+    image_url: kolping,
+    has_effect: false,
+    tecnologies: JSON.stringify(['NextJs', 'Typescript ', 'SASS', 'Context API']),
+  },
+  {
+    id: v4(),
+    language: LanguageCodeEnum.english,
+    header: 'AZO APP',
+    primary_text:
+      'In this project I worked on creating a page where the admin user could see a list of professionals and their information, a calendar widget where the professional could see their schedules, a graph that filtered consultations by period and type from that professional and fixed a bug in Google authentication.',
+    secondary_text: '',
+    image_url: azo,
+    has_effect: false,
+    tecnologies: JSON.stringify(['ExpressJs ', 'Typescript', 'PostgreSQL', 'TypeORM']),
+  },
 ]

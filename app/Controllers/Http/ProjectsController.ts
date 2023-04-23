@@ -1,14 +1,17 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { ErrorMessages, responseMessages } from '../../../common/ErrorMessages'
-import { Errors } from '../../../interface/enums'
+import { Errors, LanguageCodeEnum } from '../../../interface/enums'
 import Project from 'App/Models/Project'
 import { ProjectCreateRequestBody, ProjectUpdateRequest } from '../../../interface'
 import { v4 } from 'uuid'
 import { havePermission } from '../../../helpers/havePermission'
 export default class ProjectsController {
-  public async index({ response }: HttpContextContract) {
+  public async index({ request, response }: HttpContextContract) {
     try {
-      const list = await Project.all()
+      const { language = LanguageCodeEnum.english } = request.all() as {
+        language: LanguageCodeEnum
+      }
+      const list = await Project.query().where('language', language)
       responseMessages(response, {
         data: list || [],
         status: 202,
