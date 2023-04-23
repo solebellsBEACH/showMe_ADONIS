@@ -20,8 +20,8 @@ export interface Document {
   primary_text: string
   secondary_text: string
   image_url: string
-  has_effect: boolean
-  is_personal_bio: boolean
+  has_effect?: boolean
+  is_personal_bio?: boolean
 }
 
 export type HomePageData = {
@@ -29,8 +29,14 @@ export type HomePageData = {
   bio: Document
 }
 
-export interface Project extends Document {
+export interface Project {
   tecnologies: string
+  header: string
+  primary_text: string
+  secondary_text: string
+  image_url: string
+  has_effect?: boolean
+  is_personal_bio?: boolean
 }
 
 export interface Hobbies extends Document {
