@@ -97,17 +97,6 @@ export const DocumentsSeedData: DocumentsSeedDataType[] = [
     page_id: PageUuids.home,
     language: LanguageCodeEnum.portuguese,
     id: v4(),
-    header: 'FullStack Developer',
-    primary_text:
-      'Programo desde 2019, onde iniciei minhas aulas de lógica no Ifes. Sou uma pessoa bem comunicativa e tenho facilidade para trabalhar no contato ao cliente levantando requisitos, sem dificuldades para trabalhar em time. Trabalho atualmente de desenvolvedor Full Stack, com foco em Front-End na Empresa AdGrowth. ',
-    secondary_text:
-      'Durante esse período atuei em diversos projetos com uma atenção a mais em React Js, TypeScript e NodeJS, atualmente estou integralmente em um projeto mobile, trabalhando com React Native, oque tem sido o meu foco nos últimos meses.',
-    image_url: perfilImage,
-  },
-  {
-    page_id: PageUuids.home,
-    language: LanguageCodeEnum.portuguese,
-    id: v4(),
     header: 'Desenvolvimento Front-end',
     primary_text:
       'O profissional desenvolvedor front-end é o responsável por colocar em prática, através de códigos, o design de um site ou interface. Enquanto o web design projeta o visual de um site, o desenvolvimento front-end implementa esse design através de códigos, como HTML, CSS e JavaScript',
